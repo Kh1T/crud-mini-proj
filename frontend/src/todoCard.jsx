@@ -3,11 +3,10 @@ export default function ToDoCard() {
     return (
       <div className="card">
         <input placeholder="title" />
-        <input placeholder="date" />
         <input placeholder="description" />
+        <input placeholder="email" />
         <div>
-        <button>Edit</button>
-        <button>Delete</button>
+          <button>Add</button>
         </div>
       </div>
     );

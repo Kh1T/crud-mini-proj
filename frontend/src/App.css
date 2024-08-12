@@ -12,11 +12,12 @@
   width: 20rem;
 }
 
-input{
+input , p{
   height:3rem;
   background:none;
   padding: 8px;
   border: 4px rgb(35, 108, 35) solid;
+  margin:0px;
 }
 
 .logo {

@@ -1,61 +1,38 @@
 [
   {
-    "userId": 1,
     "id": 1,
-    "title": "delectus aut autem",
-    "completed": false
+    "title": "Buy Groceries",
+    "date": "2024-08-12",
+    "description": "Purchase milk, eggs, bread, and fruits from the local grocery store."
   },
   {
-    "userId": 1,
     "id": 2,
-    "title": "quis ut nam facilis et officia qui",
-    "completed": false
+    "title": "Morning Workout",
+    "date": "2024-08-12",
+    "description": "Complete a 30-minute cardio workout and strength training routine."
   },
   {
-    "userId": 1,
     "id": 3,
-    "title": "fugiat veniam minus",
-    "completed": false
+    "title": "Team Meeting",
+    "date": "2024-08-13",
+    "description": "Attend the weekly team meeting to discuss project updates and deadlines."
   },
   {
-    "userId": 1,
     "id": 4,
-    "title": "et porro tempora",
-    "completed": true
+    "title": "Client Presentation",
+    "date": "2024-08-14",
+    "description": "Prepare and deliver a presentation to the client about the new project proposal."
   },
   {
-    "userId": 1,
     "id": 5,
-    "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-    "completed": false
+    "title": "Read a Book",
+    "date": "2024-08-15",
+    "description": "Finish reading the last chapter of 'Atomic Habits' by James Clear."
   },
   {
-    "userId": 1,
     "id": 6,
-    "title": "qui ullam ratione quibusdam voluptatem quia omnis",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 7,
-    "title": "illo expedita consequatur quia in",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 8,
-    "title": "quo adipisci enim quam ut ab",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 9,
-    "title": "molestiae perspiciatis ipsa",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 10,
-    "title": "illo est ratione doloremque quia maiores aut",
-    "completed": true
-  },]
+    "title": "Visit the Dentist",
+    "date": "2024-08-16",
+    "description": "Go to the dental clinic for a routine check-up and cleaning."
+  }
+]
