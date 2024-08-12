@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Buy Groceries",
+    "date": "2024-08-12",
+    "description": "Purchase milk, eggs, bread, and fruits from the local grocery store."
+  },
+  {
+    "id": 2,
+    "title": "Morning Workout",
+    "date": "2024-08-12",
+    "description": "Complete a 30-minute cardio workout and strength training routine."
+  },
+  {
+    "id": 3,
+    "title": "Team Meeting",
+    "date": "2024-08-13",
+    "description": "Attend the weekly team meeting to discuss project updates and deadlines."
+  },
+  {
+    "id": 4,
+    "title": "Client Presentation",
+    "date": "2024-08-14",
+    "description": "Prepare and deliver a presentation to the client about the new project proposal."
+  },
+  {
+    "id": 5,
+    "title": "Read a Book",
+    "date": "2024-08-15",
+    "description": "Finish reading the last chapter of 'Atomic Habits' by James Clear."
+  },
+  {
+    "id": 6,
+    "title": "Visit the Dentist",
+    "date": "2024-08-16",
+    "description": "Go to the dental clinic for a routine check-up and cleaning."
+  }
+]
