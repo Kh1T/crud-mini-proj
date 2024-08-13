@@ -1,13 +1,50 @@
-import "./App.css"
-export default function ToDoCard() {
-    return (
-      <div className="card">
-        <input placeholder="title" />
-        <input placeholder="description" />
-        <input placeholder="email" />
-        <div>
-          <button>Add</button>
-        </div>
-      </div>
-    );
+import "./App.css";
+import { useState , useEffect } from "react";
+
+export default function TodoCard({ addTodo, todo }) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (todo) {
+      setTitle(todo.title);
+      setDescription(todo.description);
+      setEmail(todo.email);
+    }
+  }, [todo]);
+
+  const handleAddTodo = () => {
+    if (title.trim() && description.trim() && email.trim()) {
+      const newTodo = { title, description, email };
+      addTodo(newTodo);
+      setTitle("");
+      setDescription("");
+      setEmail("");
+    }
+  };
+
+  return (
+    <div className="card">
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
+      />
+      <input
+        type="text"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Description"
+      />
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <button onClick={handleAddTodo}>{todo ? "Update" : "Add"}</button>
+    </div>
+  );
 }

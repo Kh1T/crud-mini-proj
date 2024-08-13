@@ -1,27 +1,50 @@
 // import { useState } from "react";
 import "./App.css";
-import ToDoCard from "./todoCard";
+import TodoCard from "./todoCard";
 import ListDisplay from "./ListDisplay";
+import { useState } from "react";
 
-const data = {
-  title : 'Drink cafe',
-  email : "kwqw@hotmail.com",
-  desc : 'With Friends!'
-}
-
-
+// const data = {
+//   title: "Drink cafe",
+//   email: "kwqw@hotmail.com",
+//   desc: "With Friends!",
+// };
 
 function App() {
+  const [todos, setTodos] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+
+  const addTodo = (newTodo) => {
+    if (editIndex !== null) {
+      const updatedTodos = [...todos];
+      updatedTodos[editIndex] = newTodo;
+      setTodos(updatedTodos);
+      setEditIndex(null);
+    } else {
+      setTodos([...todos, newTodo]);
+    }
+  };
+
+  const removeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
+  const editTodo = (index) => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    setEditIndex(index);
+  };
+
   return (
-    <div>
-      <h1>Todo list:</h1>
-    <form />
-      <ToDoCard />
-      <ListDisplay
-        title={data.title}
-        desc={data.desc}
-        email={data.email}
-      />
+    <div style={{ padding: "20px" }}>
+      <h1>Todo List</h1>
+      <TodoCard addTodo={addTodo} todo={todos[editIndex]} />
+      <br></br>
+      <ListDisplay todos={todos} removeTodo={removeTodo} editTodo={editTodo} />
     </div>
   );
 }

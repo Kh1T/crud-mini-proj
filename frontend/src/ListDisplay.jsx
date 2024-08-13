@@ -1,13 +1,15 @@
-export default function ListDisplay({ title, desc, email }) {
+export default function ListDisplay({ todos, removeTodo, editTodo }) {
   return (
-    <div className="card">
-      <p>{title}</p>
-      <p>{desc}</p>
-      <p>{email}</p>
-      <div>
-        <button>Edit</button>
-        <button>Delete</button>
-      </div>
-    </div>
+    <ol style={{ padding: 0, }}>
+      {todos.map((todo, index) => (
+        <li key={index}>
+          <h3>{todo.title}</h3>
+          <p>{todo.description}</p>
+          <p>{todo.email}</p>
+          <button onClick={() => editTodo(index)}>Edit</button>
+          <button onClick={() => removeTodo(index)}>Remove</button>
+        </li>
+      ))}
+    </ol>
   );
 }
