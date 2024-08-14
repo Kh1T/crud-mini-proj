@@ -4,12 +4,6 @@ import TodoCard from "./todoCard";
 import ListDisplay from "./ListDisplay";
 import { useState } from "react";
 
-// const data = {
-//   title: "Drink cafe",
-//   email: "kwqw@hotmail.com",
-//   desc: "With Friends!",
-// };
-
 function App() {
   const [todos, setTodos] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
