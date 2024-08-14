@@ -2,11 +2,18 @@
 import "./App.css";
 import TodoCard from "./todoCard";
 import ListDisplay from "./ListDisplay";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/todos")
+      .then((response) => response.json())
+      .then((data) => setTodos(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
   const addTodo = (newTodo) => {
     if (editIndex !== null) {
@@ -18,6 +25,8 @@ function App() {
       setTodos([...todos, newTodo]);
     }
   };
+
+  console.log(todos)
 
   const removeTodo = (index) => {
     const newTodos = [...todos];

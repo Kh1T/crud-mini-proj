@@ -18,6 +18,9 @@ export default function TodoCard({ addTodo, todo }) {
   const handleAddTodo = () => {
     if (title.trim() && description.trim() && email.trim()) {
       const newTodo = { title, description, email };
+
+      fetch('http:')
+
       addTodo(newTodo);
       setTitle("");
       setDescription("");
