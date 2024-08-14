@@ -1,5 +1,6 @@
 import "./App.css";
-import { useState , useEffect } from "react";
+import { createUser } from "./createUser";
+import { useState, useEffect } from "react";
 
 export default function TodoCard({ addTodo, todo }) {
   const [title, setTitle] = useState("");
@@ -22,6 +23,7 @@ export default function TodoCard({ addTodo, todo }) {
       setDescription("");
       setEmail("");
     }
+    createUser({ title, description, email });
   };
 
   return (

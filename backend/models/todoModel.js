@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("sqlite::memory:");
+const { DataTypes } = require("sequelize");
+const sequelize = require("../database/pgdb");
 
-const TodoList = sequelize.define("TODOLIST", {
+const TodoList = sequelize.define("todolist", {
   title: {
     type: DataTypes.STRING,
     require: true,
@@ -15,3 +15,5 @@ const TodoList = sequelize.define("TODOLIST", {
     allowNull: true,
   },
 });
+
+module.exports = TodoList;
