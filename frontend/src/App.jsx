@@ -22,30 +22,90 @@ function App() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const addTodo = (newTodo) => {
-    if (editIndex !== null) {
-      const updatedTodos = [...todos];
-      updatedTodos[editIndex] = newTodo;
-      setTodos(updatedTodos);
-      setEditIndex(null);
+async function addTodo(newTodo) {
+  console.log("Adding todo:", newTodo); // Debug log
+
+  try {
+    const response = await fetch("http://localhost:3000/todos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newTodo),
+    });
+    const result = await response.json();
+    console.log("Result from server:", result); // Debug log
+
+    if (response.ok) {
+      if (editIndex !== null) {
+        const updatedTodos = [...todos];
+        updatedTodos[editIndex] = result.data.user;
+        setTodos(updatedTodos);
+        setEditIndex(null);
+      } else {
+        setTodos([...todos, result.data.user]);
+      }
     } else {
-      setTodos([...todos, newTodo]);
+      console.error("Failed to add todo:", result.error);
+    }
+  } catch (err) {
+    console.error("Error adding todo:", err);
+  }
+
+}
+
+  const removeTodo = async (index) => {
+    try {
+      const todoId = todos[index].id;
+      const response = await fetch(`http://localhost:3000/todos/${todoId}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        const newTodos = [...todos];
+        newTodos.splice(index, 1);
+        setTodos(newTodos);
+        console.log(`deleted${todoId}`)
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
-  const removeTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
+const editTodo = async (index) => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 
-  const editTodo = (index) => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-    setEditIndex(index);
-  };
+  const todoToEdit = todos[index];
+  setEditIndex(index);
+
+  try {
+    const response = await fetch(
+      `http://localhost:3000/todos/${todoToEdit.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(todoToEdit),
+      }
+    );
+    const result = await response.json();
+
+    if (response.ok) {
+      const updatedTodos = [...todos];
+      updatedTodos[index] = result.data.getUser; // Update with the response data
+      setTodos(updatedTodos);
+      console.log(`edited on ${todoToEdit.id} `);
+    } else {
+      console.error("Failed to update todo:", result.error);
+    }
+  } catch (error) {
+    console.error("Error updating todo:", error);
+  }
+};
+
 
   return (
     <div style={{ padding: "20px" }}>
@@ -56,5 +116,5 @@ function App() {
     </div>
   );
 }
-
+// 
 export default App;

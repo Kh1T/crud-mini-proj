@@ -1,45 +1,19 @@
 const express = require("express");
-const sequelize = require("./database/pgdb");
+const userController = require('./controllers/userController')
 const app = express();
 const TodoList = require("./models/todoModel");
 const port = process.env.port || 3000;
 const cors = require("cors");
+const router = express.Router();
+
+
 app.use(cors());
 
 app.use(express.json());
 
-// app.use(express.json());
-// let todos = [];
-// // console.log(sequelize);
-
-// //Get all todos
-// app.get("/api/todos", (req, res) => {
-//   res.json(todos);
-//   // res.send("Server is ready");
-// });
-
-// // Create a new todo
-// app.post('/api/todos', (req, res) => {
-//   const todo = req.body;
-//   console.log(todo)
-//   todos.push(todo);
-//   res.status(201).json(todo);
-// });
-
-// // Update an existing todo
-// app.put('/api/todos/:id', (req, res) => {
-//   const { id } = req.params;
-//   const updatedTodo = req.body;
-//   todos[id] = updatedTodo;
-//   res.json(updatedTodo);
-// });
-
-// // Delete a todo
-// app.delete('/api/todos/:id', (req, res) => {
-//   const { id } = req.params;
-//   todos.splice(id, 1);
-//   res.status(204).send();
-// });
+app.delete("/todos/:id", userController.deleteUser);
+app.patch("/todos/:id", userController.updateUser);
+app.post("/todos", userController.createUser);
 
 app.post("/todos", async (req, res) => {
   console.log(req.body);

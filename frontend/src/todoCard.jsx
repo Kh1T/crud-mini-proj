@@ -1,5 +1,5 @@
 import "./App.css";
-import { createUser } from "./createUser";
+// import { createUser } from "./createUser";
 import { useState, useEffect } from "react";
 
 export default function TodoCard({ addTodo, todo }) {
@@ -7,32 +7,32 @@ export default function TodoCard({ addTodo, todo }) {
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    if (todo) {
-      setTitle(todo.title);
-      setDescription(todo.description);
-      setEmail(todo.email);
-    }
-  }, [todo]);
+  // useEffect(() => {
+  //   if (todo) {
+  //     setTitle(todo.title);
+  //     setDescription(todo.description);
+  //     setEmail(todo.email);
+  //   }
+  // }, [todo]);
 
   const handleAddTodo = async () => {
     if (title.trim() && description.trim() && email.trim()) {
       const newTodo = { title, description, email };
 
-      const response = await fetch('http://localhost:3000/todos', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newTodo),
-        });
+      // const response = await fetch('http://localhost:3000/todos', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify(newTodo),
+      //   });
 
       addTodo(newTodo);
       setTitle("");
       setDescription("");
       setEmail("");
     }
-    createUser({ title, description, email });
+    // createUser({ title, description, email });
   };
 
   return (
