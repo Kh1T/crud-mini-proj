@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
+
 const sequelize = require("../database/pgdb");
+
 
 const TodoList = sequelize.define("todolist", {
   title: {
@@ -15,5 +17,7 @@ const TodoList = sequelize.define("todolist", {
     allowNull: true,
   },
 });
+
+console.log(TodoList);
 
 module.exports = TodoList;

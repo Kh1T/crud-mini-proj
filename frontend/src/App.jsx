@@ -9,9 +9,16 @@ function App() {
   const [editIndex, setEditIndex] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/todos")
+    fetch("http://localhost:3000/todos")
       .then((response) => response.json())
-      .then((data) => setTodos(data))
+      .then((data) => {
+        if (data.todoAll && Array.isArray(data.todoAll)) {
+          setTodos(data.todoAll);
+        } else {
+          console.error("Expected todoAll to be an array, but received:", data);
+          setTodos([]);
+        }
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
@@ -25,8 +32,6 @@ function App() {
       setTodos([...todos, newTodo]);
     }
   };
-
-  console.log(todos)
 
   const removeTodo = (index) => {
     const newTodos = [...todos];

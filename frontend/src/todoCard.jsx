@@ -15,11 +15,17 @@ export default function TodoCard({ addTodo, todo }) {
     }
   }, [todo]);
 
-  const handleAddTodo = () => {
+  const handleAddTodo = async () => {
     if (title.trim() && description.trim() && email.trim()) {
       const newTodo = { title, description, email };
 
-      fetch('http:')
+      const response = await fetch('http://localhost:3000/todos', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newTodo),
+        });
 
       addTodo(newTodo);
       setTitle("");
