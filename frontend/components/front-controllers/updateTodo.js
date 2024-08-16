@@ -1,6 +1,6 @@
-export async function createUser(data) {
-  const response = await fetch("http://localhost:3000/todos", {
-    method: "POST",
+export async function updateTodo(id, data) {
+  const response = await fetch(`http://localhost:3000/todos/${id}`, {
+    method: "PATCH",
     body: JSON.stringify(data),
     headers: {
       Accept: "application/json",
@@ -11,7 +11,7 @@ export async function createUser(data) {
   const resData = await response.json();
 
   if (!response.ok) {
-    throw new Error("Failed to Update user data.");
+    throw new Error("Failed to update todo.");
   }
 
   return resData.message;

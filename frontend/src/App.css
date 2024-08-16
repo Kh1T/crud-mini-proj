@@ -5,19 +5,28 @@
   text-align: center;
 }
 
+ol {
+  padding: 16px;
+  border: 2px solid white;
+}
+li {
+  border: 2px solid violet;
+}
+
 .card {
-  display:flex;
+  display: flex;
   flex-direction: column;
   padding: 2em;
   width: 20rem;
 }
 
-input , p{
-  height:3rem;
-  background:none;
+input,
+p {
+  height: 3rem;
+  background: none;
   padding: 8px;
   border: 4px rgb(35, 108, 35) solid;
-  margin:0px;
+  margin: 0px;
 }
 
 .logo {
@@ -47,8 +56,6 @@ input , p{
     animation: logo-spin infinite 20s linear;
   }
 }
-
-
 
 .read-the-docs {
   color: #888;
